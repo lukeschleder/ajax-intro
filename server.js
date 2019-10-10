@@ -15,6 +15,11 @@ let quotesData = [
 
 app.get(`/quotes`, (req, res) => res.send(quotesData));
 
+app.post(`/new-quote`, (req, res) =>{
+    quotesData.push({quote: 'learning is great!', author: 'everyone'});
+    res.sendStatus(200);
+});
+
 
 app.listen (PORT, () => {
     console.log('Up and running on port', PORT);
