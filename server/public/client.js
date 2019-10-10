@@ -26,7 +26,11 @@ function onReady(){
     function newQuote(){
         $.ajax({
             url: '/new-quote',
-            method: 'POST'
+            method: 'POST',
+            data: {
+                quote: $('#quoteInput').val(),
+                author: $('#authorInput').val(),
+            }
         }).then(function(response){
             console.log(response);
             $('ul').remove();

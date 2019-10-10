@@ -1,8 +1,9 @@
 const express = require('express');
-
+const bodyParser = require('body-parser');
 const app = express();
-
 const PORT = 5000;
+
+app.use(bodyParser.urlencoded({extended: true}));
 
 
 app.use(express.static('server/public'));
@@ -16,7 +17,9 @@ let quotesData = [
 app.get(`/quotes`, (req, res) => res.send(quotesData));
 
 app.post(`/new-quote`, (req, res) =>{
-    quotesData.push({quote: 'learning is great!', author: 'everyone'});
+    console.log(req.body);
+    
+    quotesData.push(req.body);
     res.sendStatus(200);
 });
 
